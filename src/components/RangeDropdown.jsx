@@ -1,6 +1,6 @@
 import React from "react";
 
-function Dropdown({name,initialVal,onNewDropvalue}) {
+function RangeDropdown({name,initialVal,onNewDropvalue}) {
   const options = [];
   for (let i = 1; i <= 100; i++) {
       options.push(
@@ -25,4 +25,4 @@ function Dropdown({name,initialVal,onNewDropvalue}) {
   );
 }
 
-export default Dropdown;
+export default RangeDropdown;

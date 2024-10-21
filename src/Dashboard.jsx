@@ -1,92 +1,52 @@
-import React, { useEffect, useState, useRef } from "react";
-import Dropdown from "./components/Dropdown";
-import { numGenerator, manageMinVal, manageMaxVal } from "./RandomNumgenerator";
-import { Chart, registerables } from "chart.js";
-
-Chart.register(...registerables);
+import React, { useEffect, useContext } from "react";
+import RangeDropdown from "./components/RangeDropdown";
+import IntervalDropdown from "./components/IntervalDropdown";
+import {
+  manageMinVal,
+  manageMaxVal,
+  manageIntervalVal,
+} from "./RandomNumgenerator";
+import Linegraph from "./Linegraph";
+import { RandomContext } from "./context";
 
 function Dashboard() {
-  const chartInstance = useRef(null);
-  const [randomNumber, setRandomNumber] = useState(null);
+  const { randomNumber } = useContext(RandomContext);
 
   const handleNewMinValue = (val) => {
-    manageMinVal(val); 
+    manageMinVal(val);
   };
 
   const handleNewMaxValue = (val) => {
-    manageMaxVal(val); 
+    manageMaxVal(val);
+  };
+
+  const handleNewInterval = (val) => {
+    manageIntervalVal(val);
   };
 
   useEffect(() => {
-    handleNewMaxValue(100); 
-
-    const ctx = document.getElementById("myChart")?.getContext("2d");
-    if (!ctx) {
-      console.error("Canvas context not found.");
-      return;
-    }
-
-    chartInstance.current = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: [],
-        datasets: [
-          {
-            label: "Random Number",
-            data: [],
-            borderColor: "#f51b07",
-            borderWidth: 1,
-            fill: true,
-            backgroundColor: "#fabab4",
-            tension: 0.5,
-          },
-        ],
-      },
-      options: {
-        responsive: true
-      },
-    });
-
-    let counter = 0;
-
-    numGenerator((ranNum) => {
-      counter++;
-      setRandomNumber(ranNum);
-      chartInstance.current.data.labels.push(counter);
-      chartInstance.current.data.datasets[0].data.push(ranNum);
-      chartInstance.current.update();
-
-      if (chartInstance.current.data.labels.length > 20) {
-        chartInstance.current.data.labels.shift();
-        chartInstance.current.data.datasets[0].data.shift();
-      }
-    });
-
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-    };
+    handleNewMaxValue(100);
+    handleNewMinValue(1);
+    handleNewInterval(1);
   }, []);
 
   return (
     <main className="flex gap-5 flex-col pt-4 h-400px items-center">
-      <div className="flex justify-around w-full">
-        <Dropdown
+      <div className="flex justify-around w-full flex-wrap gap-y-3">
+        <RangeDropdown
           onNewDropvalue={handleNewMinValue}
           name="Minimum "
           initialVal={1}
         />
-        <Dropdown
+        <IntervalDropdown onNewDropvalue={handleNewInterval} />
+        <RangeDropdown
           onNewDropvalue={handleNewMaxValue}
           name="Maximum "
           initialVal={100}
         />
       </div>
-      <div className="w-full flex justify-around items-center">
-        <div className="w-2/3">
-          <canvas id="myChart"></canvas>
-        </div>
+      <div className="w-full flex justify-around items-center max-md:flex-col gap-y-5">
+        <Linegraph/>
         <div className="h-24 w-24 bg-green-400 rounded-md flex items-center justify-center text-5xl text-white">
           {randomNumber}
         </div>
