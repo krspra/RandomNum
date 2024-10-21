@@ -46,9 +46,19 @@ function Dashboard() {
         />
       </div>
       <div className="w-full flex justify-around items-center max-md:flex-col gap-y-5">
-        <Linegraph/>
-        <div className="h-24 w-24 bg-green-400 rounded-md flex items-center justify-center text-5xl text-white">
-          {randomNumber}
+        <Linegraph />
+        <div className="flex flex-col">
+          <div
+            className={`h-24 w-24 rounded-md flex items-center justify-center text-5xl text-white ${
+              randomNumber % 2 == 0 ? "bg-green-400" : "bg-pink-500"
+            }`}
+          >
+            {randomNumber}
+          </div>
+          <div className="flex justify-around">
+            <span className="text-pink-500 font-bold">Odd</span>
+            <span className="text-green-400 font-bold">Even</span>
+          </div>
         </div>
       </div>
     </main>
