@@ -15,7 +15,7 @@ function IntervalDropdown({onNewDropvalue}) {
     onNewDropvalue(event.target.value);
   } 
   return (
-    <div className="bg-slate-500 p-2 rounded-md flex gap-1 justify-center items-center">
+    <div className="bg-orange-500 p-2 rounded-md flex gap-1 justify-center items-center">
       <label htmlFor='interval' className="text-white">
         Interval
       </label>

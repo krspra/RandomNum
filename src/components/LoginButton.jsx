@@ -2,7 +2,7 @@ import React from 'react'
 
 function LoginButton() {
   return (
-    <div className='h-10 font-semibold items-center justify-center flex w-20'>Login</div>
+    <div className='h-10 font-semibold items-center justify-center flex w-20 text-white'>Login</div>
   )
 }
 

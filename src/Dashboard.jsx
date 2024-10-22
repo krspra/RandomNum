@@ -32,7 +32,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <main className="flex gap-5 flex-col pt-4 h-400px items-center">
+    <main className="flex gap-5 flex-col pt-4 h-400px items-center justify-center">
       <div className="flex justify-around w-full flex-wrap gap-y-3">
         <RangeDropdown
           onNewDropvalue={handleNewMinValue}
