@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function LoginButton() {
   return (
-    <div className='h-10 font-semibold items-center justify-center flex w-20 text-white'>Login</div>
+    <Link to='/login' className='h-10 font-semibold items-center justify-center flex w-20 text-white'>Login</Link>
   )
 }
 
