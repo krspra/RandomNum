@@ -38,21 +38,11 @@ function Bargraph() {
       },
       options: {
         plugins:{
-          title: {
-            display: true, 
-            text: 'Numbers Range V/S Occurance Count',
-            font: {
-              size:15, 
-              weight: 'bold',
-            },
-            align: 'center',
-            position:'bottom'
-          },
           legend:{
             display:false,
           }
         },
-        responsive: true,
+        responsive:true,
         scales: {
           y: {
             beginAtZero: true,
