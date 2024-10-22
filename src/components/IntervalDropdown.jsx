@@ -5,7 +5,7 @@ function IntervalDropdown({onNewDropvalue}) {
 
   for (let i = 1; i <= 10; i++) {
     intervalArray.push(
-      <option key={i} value={i} className="bg-yellow-400 text-white">
+      <option key={i} value={i} className="bg-slate-500 text-white">
         {i}
       </option>
     );

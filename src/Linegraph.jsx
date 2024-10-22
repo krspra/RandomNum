@@ -39,9 +39,8 @@ function Linegraph() {
     });
 
     let counter = 0;
-    let intervalId; // Declare the intervalId variable
+    let intervalId; 
 
-    // Start the interval
     intervalId = numGenerator((ranNum) => {
       counter++;
       updateRandomNumber(ranNum);

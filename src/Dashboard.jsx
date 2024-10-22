@@ -7,6 +7,7 @@ import {
   manageIntervalVal,
 } from "./RandomNumgenerator";
 import Linegraph from "./Linegraph";
+import Bargraph from "./Bargraph";
 import { RandomContext } from "./context";
 
 function Dashboard() {
@@ -61,6 +62,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <Bargraph/>
     </main>
   );
 }
